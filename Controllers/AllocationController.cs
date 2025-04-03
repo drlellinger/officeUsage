@@ -130,5 +130,15 @@ public class AllocationController : ControllerBase
         DatabaseContext.SaveChanges();
         return Ok(allocation);
     }
+
+    /// <summary>
+    /// An HTTP-DELETE-method to delete all allocations
+    /// </summary>
+    [HttpDelete("flush")]
+    public void DeleteAllAllocations()
+    {
+        DatabaseContext.Allocations.RemoveRange();
+        DatabaseContext.SaveChanges();
+    }
     
 }
